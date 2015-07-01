@@ -1,0 +1,26 @@
+<h2>Edit Your List</h2>
+<%= form_for :list, url: list_path(@list), method: :put do |f| %>
+  <% if @list.errors.any? %>
+    <div id="error_explanation">
+      <h3>
+        <%= pluralize(@list.errors.count, "error") %>
+        prohibited this list from being saved:
+      </h3>
+      <ul>
+        <% @list.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<%= link_to "Back", lists_path %>

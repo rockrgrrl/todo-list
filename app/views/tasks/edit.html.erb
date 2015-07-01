@@ -1,0 +1,23 @@
+<h2>Edit Task</h2>
+<%= form_for :task, url: list_task_path(@list, @task), method: :put do |f| %>
+  <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <h3>
+        <%= pluralize(@task.errors.count, "error") %>
+        prohibited this task from being saved:
+      </h3>
+      <ul>
+        <% @task.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= f.text_field :description %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
